@@ -1,3 +1,11 @@
+import { Time } from "./time";
+
 export function Comment({ text }) {
-  return <p>Comment: {text}</p>;
+  return (
+    <div className="comment">
+      <p>Comment: {text}</p>
+
+      Time: <Time />
+    </div>
+  );
 }
