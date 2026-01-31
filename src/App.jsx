@@ -8,21 +8,36 @@ import { HtmlFor } from "./29/html-for";
 import { Click } from "./29/click";
 import { Input } from "./29/input";
 import { State } from "./29/state";
-
+import { Todos } from "./30/todos";
+import { Cursuri } from "./30/cursuri";
 
 function App() {
   // console.log(addTwo(1, 2), 'rezultat adunare')
 
   return (
     <>
-      <HtmlFor />
+      <Todos />
+
+      <hr />
+      
+      <Cursuri
+        lista={[
+          { id: 101, titlu: "Introducere în React", categorie: "Programare" },
+          { id: 102, titlu: "Design UI/UX", categorie: "Design" },
+          { id: 103, titlu: "Baze de Date SQL", categorie: "Programare" },
+        ]}
+      />
+
+      {/* Sesiunea 29 */}
+      {/* <HtmlFor />
 
       <Click/>
 
       <Input/>
 
-      <State/>
+      <State/> */}
 
+      {/* Sesiunea 28 */}
       {/* <Header userName="Vasi" />
       <Header userName="Radu" />
       <Header userName="Alex" />
