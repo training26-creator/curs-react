@@ -10,6 +10,7 @@ import { Input } from "./29/input";
 import { State } from "./29/state";
 import { Todos } from "./30/todos";
 import { Cursuri } from "./30/cursuri";
+import { Tailwind } from "./31/tailwind";
 
 function App() {
   // console.log(addTwo(1, 2), 'rezultat adunare')
@@ -20,6 +21,8 @@ function App() {
 
       <hr />
       
+      <Tailwind/>
+
       <Cursuri
         lista={[
           { id: 101, titlu: "Introducere în React", categorie: "Programare" },

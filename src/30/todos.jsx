@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 import "./todos.css";
+import axios from "axios";
+import { TodoList } from "./todo-list";
+import { TodoAdd } from "./todo-add";
 
 // Sa nu ajungeti sa aveti un array, combinat din numere, obiecte
 const array = ["De cumparat paine", "De facut temele", "De cumparat lapte"];
@@ -8,6 +11,17 @@ const array = ["De cumparat paine", "De facut temele", "De cumparat lapte"];
 // Map -> ne permite sa iteram fiecare element din array si sa il modificam
 // 1. NU modifica array-ul initial
 // 2. De fiecare data returneaza array nou
+
+async function fetchTodos() {
+  try {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos",
+    );
+    return response.data;
+  } catch {
+    console.log("eroare");
+  }
+}
 
 export function Todos() {
   // Pana la return, tinem tot JS-ul
@@ -19,14 +33,18 @@ export function Todos() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-    console.log(todos, "modificat");
+  // Promise
+  // pending - se face requestul
+  // rejected - a fost o eroare
+  // fullfilled - a fost totul bine
 
+  // Request
   useEffect(() => {
-    console.log("buna ziua");
+    fetchTodos();
   }, []);
 
   useEffect(() => {
-    console.log("todos a fostt modifica", todos);
+    // console.log("todos a fostt modifica", todos);
   }, [todos]);
 
   function handleInputChange(event) {
@@ -69,47 +87,28 @@ export function Todos() {
   //   }
 
   return (
-    <div className="todo-container">
+    <div className="w-xl my-10 mx-auto p-5 border-2 border-black bg-white">
       <h1>Todo List</h1>
 
-      <div className="input-group">
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-        <button className="add-btn" onClick={handleAdd}>
-          Adauga
-        </button>
-      </div>
+      <TodoAdd
+        inputValue={inputValue}
+        handleAdd={handleAdd}
+        handleInputChange={handleInputChange}
+      />
 
       {todos.length === 0 && <p>Hey nu ai de facut nimic</p>}
 
-      <ul className="todo-list">
-        {todos.map((todo) => {
-          return (
-            <li key={todo.id} className="todo-item">
-              <div>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => handleComplete(todo.id)}
-                />
-                <span className={todo.completed ? "text-done" : ""}>
-                  {todo.title}
-                </span>
-              </div>
-
-              <button
-                className="delete-btn"
-                // 1.folosim daca nu avem nevoie de parametri
-                // V1. handleAdd
-                // V2. Folosim ori de cate ori vrem sa trimitem un parametru
-                // V2. anomima care apeleaza handleDelete
-                onClick={() => handleDelete(todo.id)}
-              >
-                Sterge
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      {/*  Cand avem un array de mapat in JSX
+        1. TodoList
+        2. TodoItem
+        3. TodoList este folosit gen <TodoList list={} />
+        4. TodoItem este folosit gen <TodoItem todo={} />
+      */}
+      <TodoList
+        list={todos}
+        handleComplete={handleComplete}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }
