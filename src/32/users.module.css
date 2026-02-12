@@ -2,3 +2,7 @@
 .todoTitle {
     font-weight: 700;
 }
+
+.input {
+    border: 1px solid red;
+}
