@@ -1,6 +1,6 @@
 import { TodoItem } from "./todo-item";
 
-export function TodoList({ list, handleComplete, handleDelete }) {
+export function TodoList({ list, name, handleComplete, handleDelete }) {
   return (
     <ul className="todo-list">
       {list.map((todo) => {
@@ -8,6 +8,7 @@ export function TodoList({ list, handleComplete, handleDelete }) {
           <TodoItem
             key={todo.id}
             todo={todo}
+            name={name}
             handleComplete={handleComplete}
             handleDelete={handleDelete}
           />

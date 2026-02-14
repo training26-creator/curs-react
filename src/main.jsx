@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { Users } from "./32/users.jsx";
 import { Posts } from "./32/posts.jsx";
 import { PostDetails } from "./32/post-details.jsx";
+import { VoteProvider } from "./34/vote-provider.jsx";
 
 // 1. Var router
 // createBrowserRouter - ne permite sa definim un array de rute
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
   },
 ]);
 
+// 2. De imapchetat aplicatia si de expus datele
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <VoteProvider>
+    <RouterProvider router={router} />,
+  </VoteProvider>,
 );

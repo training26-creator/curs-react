@@ -11,17 +11,17 @@ import { State } from "./29/state";
 import { Todos } from "./30/todos";
 import { Cursuri } from "./30/cursuri";
 import { Tailwind } from "./31/tailwind";
+import { VoteProvider } from "./34/vote-provider";
 
 function App() {
-  // console.log(addTwo(1, 2), 'rezultat adunare')
-
   return (
     <>
-      <Todos />
+
+        <Todos name="Vadym" />
 
       <hr />
-      
-      <Tailwind/>
+
+      <Tailwind />
 
       <Cursuri
         lista={[

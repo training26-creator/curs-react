@@ -1,4 +1,10 @@
-export function TodoItem({ todo, handleComplete, handleDelete }) {
+import { useContextVotes } from "../34/use-context-votes";
+
+export function TodoItem({ todo, name, handleComplete, handleDelete }) {
+  // const value = useContext(TestContext) V1 - vechi
+  const value = useContextVotes(); //V2 - custom hook
+
+  console.log(value, "value din TodoItem");
   return (
     <li className="todo-item">
       <div>

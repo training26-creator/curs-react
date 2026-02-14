@@ -1,5 +1,7 @@
 // SCOP: Aplicarea claselor Tailwind conform pașilor ceruți
 
+import { SimpleVote } from "../34/simple-vote";
+
 export function Tailwind() {
   return (
     // 1. Container: Max-width (max-w-xl), Centrare (mx-auto), Padding (p-8)
@@ -21,6 +23,8 @@ export function Tailwind() {
           fără să mai scriem fișiere CSS separate!
         </p>
       </div>
+
+      <SimpleVote />
     </div>
   );
 }

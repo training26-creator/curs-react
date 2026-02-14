@@ -4,6 +4,8 @@ import "./todos.css";
 import axios from "axios";
 import { TodoList } from "./todo-list";
 import { TodoAdd } from "./todo-add";
+import { useLocaleStorage } from "../33/use-locale-storage";
+import { SimpleVote } from "../34/simple-vote";
 
 // Sa nu ajungeti sa aveti un array, combinat din numere, obiecte
 const array = ["De cumparat paine", "De facut temele", "De cumparat lapte"];
@@ -23,14 +25,15 @@ async function fetchTodos() {
   }
 }
 
-export function Todos() {
+export function Todos({name}) {
   // Pana la return, tinem tot JS-ul
   // Dupa return unde avem HTML + JS
   const str = "buna ziua".toLowerCase();
   const num = 123;
   const obj = { nume: "test" };
 
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocaleStorage("todos", []);
   const [inputValue, setInputValue] = useState("");
 
   // Promise
@@ -90,6 +93,8 @@ export function Todos() {
     <div className="w-xl my-10 mx-auto p-5 border-2 border-black bg-white">
       <h1>Todo List</h1>
 
+      <SimpleVote />
+
       <TodoAdd
         inputValue={inputValue}
         handleAdd={handleAdd}
@@ -106,6 +111,7 @@ export function Todos() {
       */}
       <TodoList
         list={todos}
+        name={name}
         handleComplete={handleComplete}
         handleDelete={handleDelete}
       />
