@@ -1,10 +1,11 @@
+import { useVotesStore } from "../35/use-votes-store";
 import { useContextVotes } from "./use-context-votes";
 
 // Ori de cate ori apelam o componenta react.
 // Practic se monteaza o componenta noua.
 export function SimpleVote() {
   //   const { votes, upVote, downVote } = useSimpleVote(0);
-  const { votes, downVote, upVote } = useContextVotes();
+  const { votes, downVote, upVote } = useVotesStore();
 
   // Determinăm culoarea textului în funcție de numărul de voturi
   const voteColor =

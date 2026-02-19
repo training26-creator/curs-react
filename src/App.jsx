@@ -12,12 +12,28 @@ import { Todos } from "./30/todos";
 import { Cursuri } from "./30/cursuri";
 import { Tailwind } from "./31/tailwind";
 import { VoteProvider } from "./34/vote-provider";
+import { BearCounter, Controls } from "./35/bear";
+import { LightToggle } from "./35/light-toggle";
+import { SimpleVote } from "./34/simple-vote";
+import { MagazinModern } from "./35/magazin";
 
 function App() {
   return (
     <>
 
-        <Todos name="Vadym" />
+      <BearCounter/>
+      <Controls/>
+
+      <hr />
+      <LightToggle />
+
+      <SimpleVote/>
+
+      <SimpleVote/>
+
+      <MagazinModern/>
+
+        {/* <Todos name="Vadym" />
 
       <hr />
 
@@ -29,7 +45,7 @@ function App() {
           { id: 102, titlu: "Design UI/UX", categorie: "Design" },
           { id: 103, titlu: "Baze de Date SQL", categorie: "Programare" },
         ]}
-      />
+      /> */}
 
       {/* Sesiunea 29 */}
       {/* <HtmlFor />
